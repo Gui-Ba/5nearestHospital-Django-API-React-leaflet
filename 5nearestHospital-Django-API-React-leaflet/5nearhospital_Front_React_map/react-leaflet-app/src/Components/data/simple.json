@@ -1,0 +1,37 @@
+{
+	"type": "FeatureCollection",
+	"totalFeatures": 5375,
+	"features": [
+		{
+			"type": "Feature",
+			"id": "mes_idf_journalier_no2.fid-70210e80_183d7615f50_6d66",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					651166.31399483,
+					6862011.31839299
+				]
+			},
+			"geometry_name": "geom",
+			"properties": {
+				"id": 1,
+				"nom_dept": "PARIS",
+				"nom_com": "PARIS-6E-ARRONDISSEMENT",
+				"id_com": "75106",
+				"nom_station": "Rue Bonaparte",
+				"code_station_ue": "4071",
+				"typologie": "Trafic",
+				"nom_poll": "NO2",
+				"id_poll_ue": "8",
+				"valeur": 60.6,
+				"unite": "ug.m-3",
+				"metrique": "journaliere",
+				"date_debut": "2021-10-14T22:00:00Z",
+				"date_fin": "2021-10-15T22:00:00Z",
+				"statut_valid": "1",
+				"x": 651166,
+				"y": 6862011
+			}
+		}
+	]
+}

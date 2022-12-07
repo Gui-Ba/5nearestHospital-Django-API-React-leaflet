@@ -1,0 +1,95 @@
+{
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "id": 13,
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                7.7510222,
+                48.5764838
+              ]
+            },
+            "properties": {
+              "distance": "0.0 m",
+              "city": "Strasbourg",
+              "street": "",
+              "name": "Nouvel Hopital Civil",
+              "contact_phone": "0388556677"
+            }
+          },
+          {
+            "id": 12,
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                7.7070969,
+                48.5915311
+              ]
+            },
+            "properties": {
+              "distance": "3638.57848223 m",
+              "city": "Strasbourg",
+              "street": "",
+              "name": "CHU Hautepierre",
+              "contact_phone": "0388556677"
+            }
+          },
+          {
+            "id": 21,
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.0369933,
+                49.2542096
+              ]
+            },
+            "properties": {
+              "distance": "281635.37063288 m",
+              "city": "Reims",
+              "street": "",
+              "name": "CHU Reims",
+              "contact_phone": "0388556677"
+            }
+          },
+          {
+            "id": 18,
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.8076074,
+                45.7018438
+              ]
+            },
+            "properties": {
+              "distance": "389468.50289538 m",
+              "city": "Bordeaux",
+              "street": "",
+              "name": "CHU Lyon",
+              "contact_phone": "0388556677"
+            }
+          },
+          {
+            "id": 15,
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                2.3650429,
+                48.8370792
+              ]
+            },
+            "properties": {
+              "distance": "396195.28555008 m",
+              "city": "Paris",
+              "street": "",
+              "name": "PitiÃ©-SalpÃªtriÃ¨re",
+              "contact_phone": "0388556677"
+            }
+          }
+        ]
+      }
