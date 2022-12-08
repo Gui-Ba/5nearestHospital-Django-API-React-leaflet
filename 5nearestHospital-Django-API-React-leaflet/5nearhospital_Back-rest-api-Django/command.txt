@@ -1,0 +1,127 @@
+
+
+#### CREATE DATABASE ####
+
+PS C:\Users\Guillaume\test_GIS_django\dev\gis-rest-api-with-python> env\Scripts\activate   
+(env) PS 
+
+(env) PS C:\Users\Guillaume\test_GIS_django\dev\gis-rest-api-with-python\gis_rest_project> psql -U postgres
+postgres=# CREATE DATABASE hospitals
+CREATE DATABASE
+postgres=# \c hospitals
+Vous êtes maintenant connecté à la base de données « hospitals » en tant qu'utilisateur « postgres ».
+hospitals=# CREATE EXTENSION postgis;
+CREATE EXTENSION
+hospitals=# \q
+
+ python manage.py migrate
+ 
+ then
+ 
+ python manage.py createsuperuser
+ 
+ 
+ (env) PS C:\Users\Guillaume\test_GIS_django\dev\gis-rest-api-with-python\gis_rest_project>  python manage.py makemigrations hospitals_api 
+Migrations for 'hospitals_api':
+  hospitals_api\migrations\0001_initial.py
+    - Create model Hospitals
+    - Create model Zones
+(env) PS C:\Users\Guillaume\test_GIS_django\dev\gis-rest-api-with-python\gis_rest_project> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, hospitals_api, sessions
+Running migrations:
+  Applying hospitals_api.0001_initial... OK
+  
+  =>table créer!!
+  
+-----------
+
+
+python manage.py sqlmigrate hospitals_api 0001
+
+
+PS C:\Users\Guillaume\test_GIS_django\dev\gis-rest-api-with-python> env\Scripts\activate   
+(env) PS 
+
+######POPULATE#########
+
+C:\Users\Guillaume\test_GIS_django\dev\gis-rest-api-with-python\gis_rest_project> python manage.py shell 
+
+from hospitals_api import load_region
+load_region.run() 
+
+from hospitals_api import load_hospitals
+load_hospitals.run()
+
+
+
+############test folder data file shp ########
+
+>>> from pathlib import Path
+>>> import hospitals_api
+>>> regions_shp = Path(hospitals_api.__file__).resolve().parent / 'data' / 'regions.shp'
+>>> from django.contrib.gis.gdal import DataSource
+>>> ds = DataSource(regions_shp) 
+>>> print(len(ds))  
+1
+>>> lyr = ds[0]
+>>> print(lyr.geom_type)
+Polygon
+>>> print(len(lyr))
+18
+>>> srs = lyr.srs
+>>> print(srs)
+GEOGCS["WGS 84",
+    DATUM["WGS_1984",
+        SPHEROID["WGS 84",6378137,298.257223563,
+            AUTHORITY["EPSG","7030"]],
+        AUTHORITY["EPSG","6326"]],
+    PRIMEM["Greenwich",0,
+        AUTHORITY["EPSG","8901"]],
+    UNIT["degree",0.0174532925199433,
+        AUTHORITY["EPSG","9122"]],
+    AXIS["Latitude",NORTH],
+    AXIS["Longitude",EAST],
+    AUTHORITY["EPSG","4326"]]
+>>> print(lyr.fields)
+['year', 'reg_code', 'reg_current', 'reg_name', 'nom_officie', 'reg_is_ctu', 'reg_siren_c', 'outre_mer']
+
+>>> lyr = ds[0]
+>>> print(lyr.fields)
+['year', 'reg_code', 'reg_current', 'reg_name', 'nom_officie', 'reg_is_ctu', 'reg_siren_c', 'outre_mer']
+>>> [fld.__name__ for fld in lyr.field_types]
+['OFTString', 'OFTString', 'OFTString', 'OFTString', 'OFTString', 'OFTString', 'OFTString', 'OFTString']
+>>>
+
+PROBLEME RENCONTRE lors du load_region
+django.contrib.gis.utils.layermapping.LayerMapError: OGR field "<class 'django.contrib.gis.gdal.field.OFTString'>" (of type OFTString) cannot be mapped to Django BigAutoField.
+Resolu
+
+
+
+>>> for feat in lyr:
+...     print(feat.get('reg_name'))
+...
+Normandie
+Auvergne-Rhône-Alpes
+Pays de la Loire
+Bretagne
+Nouvelle-Aquitaine
+Île-de-France
+Grand Est
+Hauts-de-France
+Corse
+La Réunion
+Mayotte
+Centre-Val de Loire
+Provence-Alpes-Côte d'Azur
+Guyane
+Martinique
+Bourgogne-Franche-Comté
+Occitanie
+Guadeloupe
+>>>
+
+
+
+
